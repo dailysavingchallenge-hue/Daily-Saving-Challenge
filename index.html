@@ -9,11 +9,18 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
     <style>
+        /* ==========================================
+           📌 BLOGGER DEFAULT THEME HIDER (FULL SCREEN)
+           ========================================== */
+        .bg-photo-overlay, .centered-top-container, .sidebar-container, .sidebar, .footer-outer, .header-widget, .blog-pager, .comments, .post-footer { display: none !important; }
+        body, html { padding: 0 !important; margin: 0 !important; width: 100% !important; height: 100% !important; background: #1a1a2e !important; }
+        .main-inner, .post, .post-outer, .post-body, .widget { padding: 0 !important; margin: 0 !important; border: none !important; background: transparent !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
+        .date-outer {display: none !important;}
+
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;800&display=swap');
 
         /* App Container */
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #1a1a2e; }
         #app-wrapper {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
@@ -24,8 +31,12 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            width: 100%;
+            width: 100vw;
             overflow-x: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99999;
         }
 
         /* Logo-style Header */
@@ -93,7 +104,7 @@
         #app-wrapper .social-icon:hover svg { opacity: 1; fill: #f9d423;}
 
         /* Modals */
-        .my-modal { display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+        .my-modal { display: none; position: fixed; z-index: 999999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
         .my-modal-content { background: #16213e; padding: 30px; border-radius: 15px; text-align: center; border: 2px solid #e94560; min-width: 300px; color: white; font-family: 'Poppins', sans-serif; box-sizing: border-box;}
         
         input[type=range] { -webkit-appearance: none; width: 100%; margin: 20px 0; background: transparent; }
@@ -212,9 +223,7 @@
         <div>&copy;2026 Daily Saving Challenge</div>
     </div>
 
-</div>
-
-<div id="customModal" class="my-modal">
+</div> <div id="customModal" class="my-modal">
     <div class="my-modal-content">
         <h2 style="margin-top:0;">Customize Big Wheel</h2>
         <p style="color:#aaa; font-size:0.9rem;">Select max value to set slices (Min: 0, Max: 900)</p>
@@ -248,17 +257,16 @@
 
 <script>
     // =========================================================
-    // 📌 වැදගත්: ඔයාගේ Blogger වෙබ්සයිට් එකේ ලින්ක් එක මෙතන දාන්න
-    // උදාහරණ: "https://myblogname.blogspot.com"
+    // 📌 වැදගත්: ඔයාගේ Blogger වෙබ්සයිට් එකේ ලින්ක් එක
     // =========================================================
-    const myBloggerURL = "https://YOUR_BLOG_NAME.blogspot.com"; 
+    const myBloggerURL = "https://dailysavingchallengelk.blogspot.com"; 
 
     function loadBloggerPosts() {
         const blogGrid = document.getElementById('blogGrid');
         const viewAllContainer = document.getElementById('viewAllContainer');
         if(!blogGrid) return;
 
-        // Label Filter එක අයින් කරලා තියෙන්නේ. දැන් සියලුම ලිපි 6ක් එනවා.
+        // Fetch API request to Blogger's JSON feed
         fetch(`${myBloggerURL}/feeds/posts/default?alt=json&max-results=6`)
             .then(response => response.json())
             .then(data => {
