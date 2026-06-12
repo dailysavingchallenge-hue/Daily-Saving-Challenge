@@ -4,25 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Saving Challenge</title>
-    <!-- html2canvas Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
-    <!-- AdSense Code (මෙතන ඔයාගේ AdSense කේතය දාන්න) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
     <style>
-        /* ==========================================
-           📌 BLOGGER DEFAULT THEME HIDER (FULL SCREEN)
-           ========================================== */
-        .bg-photo-overlay, .centered-top-container, .sidebar-container, .sidebar, .footer-outer, .header-widget, .blog-pager, .comments, .post-footer { display: none !important; }
-        body, html { padding: 0 !important; margin: 0 !important; width: 100% !important; height: 100% !important; background: #1a1a2e !important; }
-        .main-inner, .post, .post-outer, .post-body, .widget { padding: 0 !important; margin: 0 !important; border: none !important; background: transparent !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
-        .date-outer {display: none !important;}
-
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;800&display=swap');
 
         /* App Container */
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #1a1a2e; }
         #app-wrapper {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
@@ -33,12 +24,8 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            width: 100vw;
+            width: 100%;
             overflow-x: hidden;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 99999;
         }
 
         /* Logo-style Header */
@@ -160,29 +147,24 @@
 <body>
 
 <div id="app-wrapper">
-    <!-- Header (Logo Style) -->
     <div class="header-section">
         <h1 class="main-title">Daily Saving Challenge</h1>
         <p class="sub-heading">දිනපතා මුදල් ඉතිරි කිරීමේ අභියෝගය</p>
     </div>
 
-    <!-- Simplified Name Input -->
     <div class="name-input-section">
         <span class="name-label">ඔබගේ නම:</span>
         <input type="text" id="userName" placeholder="ඔබගේ නම" value="">
     </div>
 
-    <!-- Live Total -->
     <div id="liveTotal" class="live-total">ඉතුරු කරමු: රු. 0</div>
 
-    <!-- Wheel -->
     <div class="wheel-container">
         <div class="pointer"></div>
         <div class="wheel outer-wheel" id="outerWheel"></div>
         <div class="wheel inner-wheel" id="innerWheel"></div>
     </div>
 
-    <!-- Buttons -->
     <div class="btn-container">
         <button id="spinBtn" class="spin-btn" onclick="spin()">කරකවමු</button>
         <button class="custom-btn" onclick="openCustom()">ලොකු රවුමේ අගයන් වෙනස් කරමු</button>
@@ -193,13 +175,11 @@
         <p>ඔබේ අනාගතය සුරක්ෂිත කර ගැනීම සඳහා දිනපතා කුඩා මුදලක් හෝ ඉතිරි කිරීමේ පුරුද්දක් ඇති කිරීම මෙහි ප්‍රධාන අරමුණයි. මෙම Wheel එක මගින් ඔබට දිනපතා ඉතිරි කළ යුතු මුදල අහඹු ලෙස ලබා දෙන අතර, එය විනෝදාත්මක අභියෝගයක් ලෙසින් ඔබේ ඉතුරුම් ගිණුම වර්ධනය කර ගැනීමට උපකාරී වේ.</p>
     </div>
 
-    <!-- Top Ad Banner -->
     <div class="ad-banner-area">
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
     </div>
 
-    <!-- Blog Section -->
     <div class="blog-section">
         <h2>මූල්‍ය උපදෙස් සහ ලිපි</h2>
         <div class="article-grid" id="blogGrid">
@@ -208,22 +188,18 @@
         <div id="viewAllContainer" class="view-all-container"></div>
     </div>
 
-    <!-- FB Section -->
     <div class="fb-section">
         <h2>අපගේ Facebook පිටුව</h2>
         <div class="fb-embed-container">
-            <!-- ඔයාගේ FB Embed Code එක මෙතන දාන්න -->
             <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F20531316728%2Fposts%2F10154009990506729%2F&width=500&show_text=true&height=274&appId" width="100%" height="274" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
         </div>
     </div>
 
-    <!-- Bottom Ad Banner -->
     <div class="ad-banner-area">
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
     </div>
 
-    <!-- Footer with Social Icons -->
     <div class="footer">
         <div class="social-icons">
             <a href="https://www.facebook.com/YOUR_PAGE_LINK" target="_blank" class="social-icon" title="Visit FB Page">
@@ -238,7 +214,6 @@
 
 </div>
 
-<!-- Modals -->
 <div id="customModal" class="my-modal">
     <div class="my-modal-content">
         <h2 style="margin-top:0;">Customize Big Wheel</h2>
@@ -253,8 +228,11 @@
 <div id="resultModal" class="my-modal">
     <div class="my-modal-content">
         <div id="captureArea" class="capture-card">
+            
             <div id="captureDate" class="capture-date"></div>
-            <img id="popupAvatar" src="" alt="Profile" class="profile-pic" crossorigin="anonymous">
+
+            <img id="popupAvatar" src="" alt="Profile" class="profile-pic">
+            
             <h2 id="cardName">Hi Name</h2>
             <p class="capture-subtitle">අද ඔයාට ඉතුරු කරනන් වෙන මුදල</p>
             <div class="amount" id="cardTotal">රු. 0</div>
@@ -269,71 +247,88 @@
     </div>
 </div>
 
-<!-- JavaScript Engine -->
 <script>
-    // =========================================================
-    // 📌 DYNAMIC BLOG POST LOADER (JSONP METHOD)
-    // =========================================================
-    // අගට ඇති / කෑල්ල අයින් කරලා ලින්ක් එක හදාගන්නවා
-    const myBloggerURL = "https://dailysavingchallengelk.blogspot.com".replace(/\/$/, ""); 
+    // 📌 DYNAMIC BLOG POST LOADER
+    const myBloggerURL = "https://dailysavingchallengelk.blogspot.com"; 
 
     function loadBloggerPosts() {
-        const script = document.createElement('script');
-        // JSONP request එක
-        script.src = `${myBloggerURL}/feeds/posts/default?alt=json-in-script&max-results=6&callback=renderBloggerPosts`;
-        document.body.appendChild(script);
-    }
-
-    // JSONP Callback Function එක
-    window.renderBloggerPosts = function(data) {
         const blogGrid = document.getElementById('blogGrid');
         const viewAllContainer = document.getElementById('viewAllContainer');
         if(!blogGrid) return;
-        
-        blogGrid.innerHTML = ''; 
-        const feed = data.feed;
-        const entries = feed.entry || [];
-        const totalPosts = parseInt(feed.openSearch$totalResults.$t);
 
-        if (entries.length === 0) {
-            blogGrid.innerHTML = '<p style="text-align:center; color:#ccc;">දැනට ලිපි කිසිවක් නොමැත.</p>';
-            return;
-        }
+        const cacheBuster = new Date().getTime();
+        const feedUrl = `${myBloggerURL}/feeds/posts/default?alt=json&max-results=6&t=${cacheBuster}`;
 
-        entries.forEach(entry => {
-            const title = entry.title.$t;
-            
-            let link = "#";
-            for (let i = 0; i < entry.link.length; i++) {
-                if (entry.link[i].rel === "alternate") {
-                    link = entry.link[i].href;
-                    break;
+        fetch(feedUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
                 }
-            }
+                return response.json();
+            })
+            .then(data => {
+                blogGrid.innerHTML = ''; 
+                const feed = data.feed;
+                const entries = feed.entry || [];
+                const totalPosts = parseInt(feed.openSearch$totalResults.$t);
 
-            let content = entry.summary ? entry.summary.$t : (entry.content ? entry.content.$t : "");
-            let tempDiv = document.createElement("div");
-            tempDiv.innerHTML = content;
-            let textContent = tempDiv.textContent || tempDiv.innerText || "";
-            let snippet = textContent.trim().substring(0, 150) + "..."; 
+                if (entries.length === 0) {
+                    blogGrid.innerHTML = '<p style="text-align:center; color:#ccc;">දැනට ලිපි කිසිවක් නොමැත.</p>';
+                    return;
+                }
 
-            blogGrid.innerHTML += `
-                <div class="article-card">
-                    <h3>${title}</h3>
-                    <p>${snippet}</p>
-                    <a href="${link}" target="_blank" class="read-more">තවත් කියවන්න &raquo;</a>
-                </div>
-            `;
-        });
+                entries.forEach(entry => {
+                    const title = entry.title.$t;
+                    
+                    let link = "#";
+                    for (let i = 0; i < entry.link.length; i++) {
+                        if (entry.link[i].rel === "alternate") {
+                            link = entry.link[i].href;
+                            break;
+                        }
+                    }
 
-        if (totalPosts > 6) {
-            viewAllContainer.innerHTML = `<a href="${myBloggerURL}/" target="_blank" class="view-all-btn">සියලුම ලිපි සඳහා</a>`;
-        }
-    };
+                    let content = entry.summary ? entry.summary.$t : (entry.content ? entry.content.$t : "");
+                    let tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = content;
+                    let textContent = tempDiv.textContent || tempDiv.innerText || "";
+                    let snippet = textContent.trim().substring(0, 150) + "..."; 
 
-    // ==========================================
+                    blogGrid.innerHTML += `
+                        <div class="article-card">
+                            <h3>${title}</h3>
+                            <p>${snippet}</p>
+                            <a href="${link}" target="_blank" class="read-more">තවත් කියවන්න &raquo;</a>
+                        </div>
+                    `;
+                });
+
+                if (totalPosts > 6) {
+                    viewAllContainer.innerHTML = `<a href="${myBloggerURL}/" target="_blank" class="view-all-btn">සියලුම ලිපි සඳහා</a>`;
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching posts:", error);
+                blogGrid.innerHTML = '<p style="text-align:center; color:#ccc;">අන්තර්ජාල දෝෂයකි හෝ ලිපි ලබා ගත නොහැක.</p>';
+            });
+    }
+
+    // 📌 GMAIL STYLE AVATAR GENERATOR (NO CORS ISSUES)
+    function generateAvatar(name) {
+        const bgColors = ['#FF595E', '#FFCA3A', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5', '#00BBF9', '#00F5D4'];
+        const randomBg = bgColors[Math.floor(Math.random() * bgColors.length)];
+        const initial = name.trim() ? name.trim().charAt(0).toUpperCase() : '👤';
+        
+        const svg = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                <rect width="100" height="100" fill="${randomBg}" />
+                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="45" font-weight="bold" fill="#ffffff">${initial}</text>
+            </svg>
+        `;
+        return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    }
+
     // 📌 WHEEL LOGIC
-    // ==========================================
     let outerVals = [100, 200, 300, 400, 500, 600, 700, 800, 900];
     const innerVals = [10, 20, 30, 40, 50, 60, 70, 80, 90];
     const colors = ['#FF595E', '#FFCA3A', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5', '#00BBF9', '#00F5D4', '#FEE440'];
@@ -453,8 +448,8 @@
             const currentDate = new Date().toLocaleDateString('en-US', dateOptions);
             document.getElementById('captureDate').innerText = currentDate;
 
-            const randomAvatarNumber = Math.floor(Math.random() * 50) + 1;
-            document.getElementById('popupAvatar').src = `https://avatar.iran.liara.run/public/${randomAvatarNumber}`;
+            // Load generated avatar based on the user's name
+            document.getElementById('popupAvatar').src = generateAvatar(nameInput);
 
             document.getElementById('resultModal').style.display = "flex";
 
