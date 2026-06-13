@@ -102,7 +102,6 @@
             z-index: 1;
         }
 
-        /* Header with Logo - Same alignment on all devices */
         .header-section {
             padding: 30px 0 20px;
             text-align: center;
@@ -190,10 +189,10 @@
             background: var(--glass);
             color: var(--text-primary);
             font-family: 'Noto Sans Sinhala', 'Poppins', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             outline: none;
             border-radius: var(--radius-full);
-            width: 220px;
+            width: 280px;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
@@ -201,13 +200,13 @@
         .name-input-section input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-glow);
-            width: 260px;
+            width: 320px;
         }
 
         .name-input-section input:focus + i,
         .input-group:focus-within i { color: var(--primary); }
 
-        .name-input-section input::placeholder { color: var(--text-muted); }
+        .name-input-section input::placeholder { color: var(--text-muted); font-size: 0.85rem; }
 
         .live-total-container {
             display: flex;
@@ -441,7 +440,6 @@
         .purpose-section h2 i { color: var(--accent); font-size: 1.3rem; }
         .purpose-section p { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; }
 
-        /* Ad Banner - Hidden but ready for AdSense */
         .ad-banner-area {
             width: 100%;
             max-width: 728px;
@@ -460,10 +458,7 @@
             animation: fadeInUp 0.6s ease-out 0.8s both;
         }
 
-        .ad-banner-area i {
-            margin-right: 8px;
-            color: var(--accent);
-        }
+        .ad-banner-area i { margin-right: 8px; color: var(--accent); }
 
         .blog-section { margin-bottom: 50px; animation: fadeInUp 0.6s ease-out 0.9s both; }
 
@@ -865,7 +860,6 @@
             100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
         }
 
-        /* ====== RESPONSIVE FIXES ====== */
         @media (max-width: 1024px) {
             .wheel-container { transform: scale(0.9); }
             .article-grid { grid-template-columns: repeat(2, 1fr); }
@@ -896,8 +890,8 @@
             .spin-btn { font-size: 1.1rem; padding: 14px 30px; width: 90%; max-width: 280px; justify-content: center; }
             .custom-btn { font-size: 0.85rem; padding: 10px 20px; }
             .name-input-section { flex-direction: column; gap: 10px; }
-            .name-input-section input { width: 200px; }
-            .name-input-section input:focus { width: 220px; }
+            .name-input-section input { width: 240px; font-size: 0.95rem; }
+            .name-input-section input:focus { width: 260px; }
             .live-total { padding: 15px 25px; font-size: 1.3rem; }
             .purpose-section { padding: 20px; }
             .purpose-section h2 { font-size: 1.2rem; }
@@ -920,9 +914,10 @@
             .wheel-container { transform: scale(0.55); margin-top: -80px; margin-bottom: -80px; }
             .live-total { font-size: 1.1rem; padding: 12px 20px; }
             .spin-btn { font-size: 1rem; padding: 12px 25px; }
+            .name-input-section input { width: 200px; }
+            .name-input-section input:focus { width: 220px; }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -934,7 +929,7 @@
     <div id="app-wrapper">
         <div class="header-section">
             <div class="logo-container">
-                <img src="https://github.com/dailysavingchallenge-hue/Daily-Saving-Challenge/blob/main/dsc_logo.png" alt="DSC Logo" class="logo-img">
+                <img src="dsc_logo.png" alt="DSC Logo" class="logo-img">
                 <div class="title-group">
                     <h1 class="main-title">Daily Saving Challenge</h1>
                     <p class="sub-heading">දිනපතා මුදල් ඉතිරි කිරීමේ අභියෝගය</p>
@@ -946,7 +941,7 @@
             <span class="name-label">ඔබගේ නම:</span>
             <div class="input-group">
                 <i class="fas fa-user"></i>
-                <input type="text" id="userName" placeholder="ඔබගේ නම ඇතුලත් කරන්න" value="">
+                <input type="text" id="userName" placeholder="නම ඇතුලත් කරන්න" value="">
             </div>
         </div>
 
@@ -986,9 +981,7 @@
             <p>ඔබේ අනාගතය සුරක්ෂිත කර ගැනීම සඳහා දිනපතා කුඩා මුදලක් හෝ ඉතිරි කිරීමේ පුරුද්දක් ඇති කිරීම මෙහි ප්‍රධාන අරමුණයි. මෙම Wheel එක මගින් ඔබට දිනපතා ඉතිරි කළ යුතු මුදල අහඹු ලෙස ලබා දෙන අතර, එය විනෝදාත්මක අභියෝගයක් ලෙසින් ඔබේ ඉතිරුම් ගිණුම වර්ධනය කර ගැනීමට උපකාරී වේ.</p>
         </div>
 
-        <!-- Ad Banner 1 - Hidden (Ready for AdSense) -->
         <div class="ad-banner-area" id="adBanner1">
-            <!-- AdSense code here -->
         </div>
 
         <div class="blog-section">
@@ -1003,9 +996,7 @@
             </div>
         </div>
 
-        <!-- Ad Banner 2 - Hidden (Ready for AdSense) -->
         <div class="ad-banner-area" id="adBanner2">
-            <!-- AdSense code here -->
         </div>
 
         <div class="fb-section">
@@ -1050,7 +1041,7 @@
         <div class="my-modal-content">
             <div id="captureArea" class="capture-card">
                 <div id="captureDate" class="capture-date"></div>
-                <img id="popupAvatar" src="" alt="Profile" class="profile-pic" onerror="this.src='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="%236366f1" rx="50"/%3E%3Ctext x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="45" fill="white"%3E👤%3C/text%3E%3C/svg%3E'">
+                <img id="popupAvatar" src="" alt="Profile" class="profile-pic" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%236366f1\' rx=\'50\'/%3E%3Ctext x=\'50%\' y=\'50%\' text-anchor=\'middle\' dominant-baseline=\'central\' font-family=\'Arial\' font-size=\'45\' fill=\'white\'%3E👤%3C/text%3E%3C/svg%3E'">
                 <h2 id="cardName">Hi Name</h2>
                 <p class="capture-subtitle">අද ඔයාට ඉතුරු කරනන් වෙන මුදල</p>
                 <div class="amount" id="cardTotal">රු. 0</div>
@@ -1068,68 +1059,63 @@
         const myBloggerURL = "https://dailysavingchallengelk.blogspot.com";
         let outerVals = [100, 200, 300, 400, 500, 600, 700, 800, 900];
         const innerVals = [10, 20, 30, 40, 50, 60, 70, 80, 90];
-        // Different colors for outer and inner wheels
         const outerColors = ['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f59e0b', '#10b981', '#06b6d4', '#3b82f6', '#8b5cf6'];
         const innerColors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd', '#00d2d3', '#1dd1a1', '#ff9f43'];
         let outerDeg = 0;
         let innerDeg = 0;
         let isSpinning = false;
 
+        // JSONP ක්‍රමයට Blogger ලිපි ලබා ගැනීම (Local computer එකේදීත් වැඩ කරයි)
         function loadBloggerPosts() {
             const blogGrid = document.getElementById('blogGrid');
             if(!blogGrid) return;
-
-            const label = "Daily Saving Challenge";
-            const cacheBuster = new Date().getTime();
-            const feedUrl = `${myBloggerURL}/feeds/posts/default/-/${encodeURIComponent(label)}?alt=json&max-results=6&t=${cacheBuster}`;
-
-            fetch(feedUrl)
-                .then(response => {
-                    if (!response.ok) throw new Error("Network response was not ok");
-                    return response.json();
-                })
-                .then(data => {
-                    blogGrid.innerHTML = '';
-                    const feed = data.feed;
-                    const entries = feed.entry || [];
-
-                    if (entries.length === 0) {
-                        blogGrid.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding: 40px; grid-column: 1 / -1;">දැනට ලිපි කිසිවක් නොමැත.</p>';
-                        return;
-                    }
-
-                    entries.forEach(entry => {
-                        const title = entry.title.$t;
-                        let link = "#";
-                        for (let i = 0; i < entry.link.length; i++) {
-                            if (entry.link[i].rel === "alternate") {
-                                link = entry.link[i].href;
-                                break;
-                            }
-                        }
-                        let content = entry.summary ? entry.summary.$t : (entry.content ? entry.content.$t : "");
-                        let tempDiv = document.createElement("div");
-                        tempDiv.innerHTML = content;
-                        let textContent = tempDiv.textContent || tempDiv.innerText || "";
-                        let snippet = textContent.trim().substring(0, 150) + "...";
-
-                        blogGrid.innerHTML += `
-                            <div class="article-card">
-                                <h3>${title}</h3>
-                                <p>${snippet}</p>
-                                <a href="${link}" target="_blank" class="read-more">
-                                    තවත් කියවන්න
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        `;
-                    });
-                })
-                .catch(error => {
-                    console.error("Error fetching posts:", error);
-                    blogGrid.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding: 40px; grid-column: 1 / -1;">අන්තර්ජාල දෝෂයකි හෝ ලිපි ලබා ගත නොහැක.</p>';
-                });
+            
+            const script = document.createElement('script');
+            // JSONP callback එක handleBloggerPosts ලෙස සකසා ඇත
+            script.src = `${myBloggerURL}/feeds/posts/default?alt=json-in-script&callback=handleBloggerPosts&max-results=6`;
+            document.body.appendChild(script);
         }
+
+        // ලිපි ලැබුණු පසු පෙන්වීමේ ෆන්ක්ෂන් එක
+        window.handleBloggerPosts = function(data) {
+            const blogGrid = document.getElementById('blogGrid');
+            if(!blogGrid) return;
+            blogGrid.innerHTML = '';
+            const feed = data.feed;
+            const entries = feed.entry || [];
+
+            if (entries.length === 0) {
+                blogGrid.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding: 40px; grid-column: 1 / -1;">දැනට ලිපි කිසිවක් නොමැත.</p>';
+                return;
+            }
+
+            entries.forEach(entry => {
+                const title = entry.title.$t;
+                let link = "#";
+                for (let i = 0; i < entry.link.length; i++) {
+                    if (entry.link[i].rel === "alternate") {
+                        link = entry.link[i].href;
+                        break;
+                    }
+                }
+                let content = entry.summary ? entry.summary.$t : (entry.content ? entry.content.$t : "");
+                let tempDiv = document.createElement("div");
+                tempDiv.innerHTML = content;
+                let textContent = tempDiv.textContent || tempDiv.innerText || "";
+                let snippet = textContent.trim().substring(0, 150) + "...";
+
+                blogGrid.innerHTML += `
+                    <div class="article-card">
+                        <h3>${title}</h3>
+                        <p>${snippet}</p>
+                        <a href="${link}" target="_blank" class="read-more">
+                            තවත් කියවන්න
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+            });
+        };
 
         function generateAvatar(name) {
             const bgColors = ['#6366f1', '#ec4899', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#84cc16'];
