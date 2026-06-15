@@ -1200,6 +1200,12 @@
             closeCustom();
             outerDeg = 0;
             innerDeg = 0;
+            
+            document.getElementById('outerWheel').style.transition = 'none';
+            document.getElementById('innerWheel').style.transition = 'none';
+            
+            void document.getElementById('outerWheel').offsetWidth;
+
             document.getElementById('outerWheel').style.transform = `rotate(0deg)`;
             document.getElementById('innerWheel').style.transform = `rotate(0deg)`;
             document.getElementById('liveAmount').innerText = `රු. 0`;
@@ -1269,6 +1275,10 @@
                 return;
             }
             isSpinning = true;
+            
+            // Random spin duration between 10000ms (10s) and 15000ms (15s)
+            const spinDuration = Math.floor(Math.random() * 5000) + 10000; 
+
             const spinBtn = document.getElementById('spinBtn');
             spinBtn.disabled = true;
             spinBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> කරකවමින්...';
@@ -1279,11 +1289,19 @@
             const outTarget = 360 - (outIndex * (360 / outerVals.length));
             const inTarget = 360 - (inIndex * (360 / innerVals.length));
 
-            outerDeg += 1800 + outTarget - (outerDeg % 360);
-            innerDeg += 2520 + inTarget - (innerDeg % 360);
+            // Increase base rotation to compensate for longer spin time
+            outerDeg += 3600 + outTarget - (outerDeg % 360);
+            innerDeg += 5040 + inTarget - (innerDeg % 360);
 
-            document.getElementById('outerWheel').style.transform = `rotate(${outerDeg}deg)`;
-            document.getElementById('innerWheel').style.transform = `rotate(${innerDeg}deg)`;
+            const outerWheel = document.getElementById('outerWheel');
+            const innerWheel = document.getElementById('innerWheel');
+
+            // Apply the random transition duration
+            outerWheel.style.transition = `transform ${spinDuration}ms cubic-bezier(0.17, 0.67, 0.1, 1)`;
+            innerWheel.style.transition = `transform ${spinDuration}ms cubic-bezier(0.17, 0.67, 0.1, 1)`;
+
+            outerWheel.style.transform = `rotate(${outerDeg}deg)`;
+            innerWheel.style.transform = `rotate(${innerDeg}deg)`;
 
             setTimeout(() => {
                 const total = outerVals[outIndex] + innerVals[inIndex];
@@ -1306,7 +1324,7 @@
                 isSpinning = false;
                 spinBtn.disabled = false;
                 spinBtn.innerHTML = '<i class="fas fa-sync-alt"></i> කරකවමු';
-            }, 5000);
+            }, spinDuration);
         }
 
         function closeModal() {
