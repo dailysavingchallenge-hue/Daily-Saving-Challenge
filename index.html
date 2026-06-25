@@ -1392,6 +1392,14 @@
                     lastWinnerAmount: total
                 });
 
+                // 📌 ලැයිස්තුවක් විදියට හැමෝගෙම විස්තර එකතු කිරීම (History List)
+                const currentTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
+                database.ref('spinHistory').push({
+                    userName: nameInput,
+                    wonAmount: total,
+                    playedTime: currentTime
+                });
+
                 document.getElementById('resultModal').classList.add('active');
                 createConfetti();
                 isSpinning = false;
