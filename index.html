@@ -405,7 +405,6 @@
 
         .custom-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--primary); color: var(--text-primary); transform: translateY(-2px); }
 
-        /* Highlighted Custom Button Style */
         .highlighted-btn {
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(236, 72, 153, 0.15));
             border: 1px solid var(--accent);
@@ -419,7 +418,6 @@
             box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
         }
 
-        /* LIVE STATS CSS */
         .live-stats-container {
             display: flex;
             flex-direction: column;
@@ -636,17 +634,18 @@
         .footer-text a { color: var(--primary-light); text-decoration: none; transition: color 0.3s; }
         .footer-text a:hover { color: var(--secondary); }
 
+        /* 📌 MODAL CSS REWRITTEN FOR MOBILE */
         .my-modal {
             display: none;
             position: fixed;
             z-index: 999999;
             left: 0; top: 0;
             width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: center; /* keep centered vertically */
+            padding: 15px; /* Less padding on outside for mobile */
             animation: fadeIn 0.3s ease;
         }
 
@@ -660,16 +659,21 @@
             border-radius: var(--radius-xl);
             text-align: center;
             border: 1px solid var(--glass-border);
-            min-width: 320px;
-            max-width: 500px;
             width: 100%;
+            max-width: 500px; /* Safe max width */
+            max-height: 90vh; /* IMPORTANT: Keep inside screen */
+            overflow-y: auto; /* IMPORTANT: Scroll if too tall */
+            overflow-x: hidden;
             color: var(--text-primary);
             font-family: 'Noto Sans Sinhala', 'Poppins', sans-serif;
             box-shadow: var(--shadow-xl), 0 0 40px rgba(99, 102, 241, 0.2);
             animation: modalSlideIn 0.4s ease;
             position: relative;
-            overflow: hidden;
         }
+        
+        /* Clean scrollbar for modals */
+        .my-modal-content::-webkit-scrollbar { width: 6px; }
+        .my-modal-content::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
         @keyframes modalSlideIn {
             from { transform: translateY(-30px) scale(0.95); opacity: 0; }
@@ -740,6 +744,7 @@
         .action-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             padding: 12px 28px;
             border: none;
@@ -751,28 +756,11 @@
             transition: all 0.3s ease;
         }
 
-        .action-btn.primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-
+        .action-btn.primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); }
         .action-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4); }
-
-        .action-btn.secondary {
-            background: var(--glass);
-            color: var(--text-secondary);
-            border: 1px solid var(--glass-border);
-        }
-
+        .action-btn.secondary { background: var(--glass); color: var(--text-secondary); border: 1px solid var(--glass-border); }
         .action-btn.secondary:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
-
-        .action-btn.success {
-            background: linear-gradient(135deg, var(--success), #059669);
-            color: white;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        }
-
+        .action-btn.success { background: linear-gradient(135deg, var(--success), #059669); color: white; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
         .action-btn.success:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); }
 
         .capture-card {
@@ -800,87 +788,24 @@
             animation: cardGlow 4s ease-in-out infinite;
         }
 
-        @keyframes cardGlow {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
-        }
+        @keyframes cardGlow { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } }
 
-        .capture-date {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 15px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-pic {
-            width: 85px; height: 85px;
-            border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            margin-bottom: 15px;
-            object-fit: cover;
-            background: white;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
+        .capture-date { font-size: 0.8rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 15px; font-weight: 600; position: relative; z-index: 1;}
+        .profile-pic { width: 85px; height: 85px; border-radius: 50%; border: 4px solid rgba(255, 255, 255, 0.3); margin-bottom: 15px; object-fit: cover; background: white; position: relative; z-index: 1; display: block; margin-left: auto; margin-right: auto;}
         .capture-card h2 { margin: 0; font-size: 1.5rem; color: #fff; position: relative; z-index: 1; font-weight: 700; }
         .capture-subtitle { margin: 8px 0 20px 0; font-size: 1rem; color: rgba(255, 255, 255, 0.9); position: relative; z-index: 1; font-weight: 500; }
         .capture-card .amount { font-size: 3.5rem; font-weight: 800; color: #fbbf24; margin: 0; text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); position: relative; z-index: 1; letter-spacing: -1px; }
         .capture-msg { font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin-top: 20px; position: relative; z-index: 1; font-weight: 400; }
-
-        .capture-footer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 25px;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #fbbf24;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 12px;
-            border-radius: var(--radius);
-            position: relative;
-            z-index: 1;
-        }
-
-        .capture-footer i { font-size: 1.2rem; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--dark); }
-        ::-webkit-scrollbar-thumb { background: var(--dark-lighter); border-radius: var(--radius-full); }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+        .capture-footer { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 25px; font-size: 1rem; font-weight: 700; color: #fbbf24; background: rgba(0, 0, 0, 0.2); padding: 12px; border-radius: var(--radius); position: relative; z-index: 1;}
 
         .confetti {
-            position: fixed;
-            width: 10px; height: 10px;
-            top: -10px;
-            z-index: 9999999;
+            position: fixed; width: 10px; height: 10px; top: -10px; z-index: 9999999;
             animation: confettiFall linear forwards;
         }
 
-        @keyframes confettiFall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
+        @keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
 
+        /* 📌 MOBILE RESPONSIVE MEDIA QUERIES */
         @media (max-width: 1024px) {
             .wheel-container { transform: scale(0.9); }
             .article-grid { grid-template-columns: repeat(2, 1fr); }
@@ -894,7 +819,7 @@
             .wheel-container { transform: scale(0.8); margin-top: -20px; margin-bottom: -20px; }
             .article-grid { grid-template-columns: 1fr; }
             .purpose-section { padding: 25px; }
-            .my-modal-content { padding: 25px; max-width: 90%; }
+            .my-modal-content { padding: 30px 20px; }
             .capture-card { padding: 25px; max-width: 100%; }
             .capture-card .amount { font-size: 2.8rem; }
             .section-header { flex-direction: column; align-items: flex-start; }
@@ -918,7 +843,8 @@
             .purpose-section h2 { font-size: 1.2rem; }
             .fb-card { padding: 20px 15px; }
             .fb-embed-container { max-width: 100%; }
-            .my-modal-content { padding: 20px; min-width: auto; width: 95%; }
+            /* Safe Mobile Modal Padding */
+            .my-modal-content { padding: 25px 15px; width: 100%; }
             .capture-card { padding: 20px; }
             .capture-card .amount { font-size: 2.5rem; }
             .profile-pic { width: 70px; height: 70px; }
@@ -949,31 +875,31 @@
 
     <!-- 📌 NEW: ANNOUNCEMENT MODAL ON LOAD -->
     <div id="announcementModal" class="my-modal active">
-        <div class="my-modal-content" style="max-width: 550px; padding: 30px;">
-            <h2 class="main-title" style="font-size: 1.8rem; margin-bottom: 15px; text-align: center;">📢 විශේෂ නිවේදනයක්! 📢</h2>
+        <div class="my-modal-content">
+            <h2 class="main-title" style="font-size: clamp(1.4rem, 4vw, 1.8rem); margin-bottom: 15px; text-align: center;">📢 විශේෂ නිවේදනයක්! 📢</h2>
             
-            <p style="color: var(--text-primary); font-size: 1.1rem; margin-bottom: 15px; font-weight: 600; text-align: center;">
+            <p style="color: var(--text-primary); font-size: clamp(0.95rem, 3vw, 1.1rem); margin-bottom: 15px; font-weight: 600; text-align: center;">
                 මේ අලුත් වෙනස්කම් වලට ඔයාලා කැමතිද? අකමැතිද? 🤔
             </p>
             
-            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 20px; line-height: 1.7; text-align: left;">
+            <p style="color: var(--text-secondary); font-size: clamp(0.85rem, 2.5vw, 1rem); margin-bottom: 20px; line-height: 1.6; text-align: left;">
                 යාළුවනේ, ජූලි 1 වෙනිදා ඉඳන් අපි අපේ Website එකේ පොඩි වෙනස්කම් කිහිපයක් කරන්න තීරණය කළා. 🛠️<br><br>
                 🔹 ඉස්සරහට Wheel එක කරකවන්න පුළුවන් වෙන්නේ දවසට එක වතාවක් විතරයි! 🎡<br>
                 🔹 ඒ වෙනුවට, ඔයාලට තවත් අලුත් Options කිහිපයකුත් අපි ඉක්මනින්ම එකතු කරනවා. ✨<br><br>
                 පල්ලෙහායින් ඔයාලගේ අදහස Comment කරගෙන යන්න! 👇
             </p>
 
-            <div class="fb-embed-container" style="margin-bottom: 25px; max-width: 100%; width: 100%; border-radius: var(--radius); overflow: hidden; background: white;">
-                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fweb.facebook.com%2Fdailysavingchallange%2F&tabs=timeline&width=340&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
-                    width="100%" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" 
+            <div class="fb-embed-container" style="margin-bottom: 20px; max-width: 100%; width: 100%; border-radius: var(--radius); overflow: hidden; background: white; height: 250px;">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fweb.facebook.com%2Fdailysavingchallange%2F&tabs=timeline&width=340&height=250&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
+                    width="100%" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" 
                     allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </div>
             
-            <div class="modal-actions" style="flex-direction: column; gap: 12px; margin-top: 10px;">
-                <a href="https://web.facebook.com/dailysavingchallange/" target="_blank" class="action-btn primary" style="width: 100%; text-decoration: none;">
+            <div class="modal-actions" style="flex-direction: column; gap: 10px; margin-top: 5px;">
+                <a href="https://web.facebook.com/dailysavingchallange/" target="_blank" class="action-btn primary" style="width: 100%; text-decoration: none; padding: 12px;">
                     <i class="fab fa-facebook-f"></i> Facebook එකෙන් Comment කරන්න
                 </a>
-                <button class="action-btn secondary" style="width: 100%;" onclick="closeAnnouncement()">
+                <button class="action-btn secondary" style="width: 100%; padding: 12px;" onclick="closeAnnouncement()">
                     වසන්න (ප්‍රධාන පිටුවට යන්න)
                 </button>
             </div>
@@ -1029,7 +955,6 @@
                 </button>
             </div>
             
-            <!-- 📌 REAL-TIME LIVE STATS SECTION -->
             <div class="live-stats-container">
                 <div class="stat-badge">
                     <i class="fas fa-users"></i> මේ දක්වා සහභාගී වූ ගණන: <span id="userCountDisplay">...</span>
@@ -1115,7 +1040,7 @@
 
     <script>
         // =========================================
-        // 📌 FIREBASE CONFIGURATION (Realtime DB)
+        // 📌 FIREBASE CONFIGURATION
         // =========================================
         const firebaseConfig = {
             apiKey: "AIzaSyDo_Z1pawT4IB_KaoLdo0Yl2YV5gt27S3U",
@@ -1156,7 +1081,7 @@
         });
 
         // =========================================
-        // 📌 GAME LOGIC (Wheel, Posts, Avatar etc.)
+        // 📌 GAME LOGIC
         // =========================================
         const myBloggerURL = "https://dailysavingchallengelk.blogspot.com";
         let outerVals = [100, 200, 300, 400, 500, 600, 700, 800, 900];
@@ -1170,7 +1095,6 @@
         function loadBloggerPosts() {
             const blogGrid = document.getElementById('blogGrid');
             if(!blogGrid) return;
-            
             const script = document.createElement('script');
             script.src = `${myBloggerURL}/feeds/posts/default?alt=json-in-script&callback=handleBloggerPosts&max-results=6`;
             document.body.appendChild(script);
@@ -1192,14 +1116,10 @@
                 const title = entry.title.$t;
                 let link = "#";
                 for (let i = 0; i < entry.link.length; i++) {
-                    if (entry.link[i].rel === "alternate") {
-                        link = entry.link[i].href;
-                        break;
-                    }
+                    if (entry.link[i].rel === "alternate") { link = entry.link[i].href; break; }
                 }
                 let content = entry.summary ? entry.summary.$t : (entry.content ? entry.content.$t : "");
-                let tempDiv = document.createElement("div");
-                tempDiv.innerHTML = content;
+                let tempDiv = document.createElement("div"); tempDiv.innerHTML = content;
                 let textContent = tempDiv.textContent || tempDiv.innerText || "";
                 let snippet = textContent.trim().substring(0, 150) + "...";
 
@@ -1208,8 +1128,7 @@
                         <h3>${title}</h3>
                         <p>${snippet}</p>
                         <a href="${link}" target="_blank" class="read-more">
-                            තවත් කියවන්න
-                            <i class="fas fa-arrow-right"></i>
+                            තවත් කියවන්න <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 `;
@@ -1228,7 +1147,6 @@
             const wheel = document.getElementById(id);
             if(!wheel) return;
             wheel.innerHTML = '';
-
             const colors = isInner ? innerColors : outerColors;
 
             if(isZeroMode && id === 'outerWheel') {
@@ -1236,30 +1154,21 @@
                 return;
             }
             if(values.length === 1 && id === 'outerWheel') {
-                wheel.style.background = 'none';
-                wheel.style.backgroundColor = colors[0];
-                const span = document.createElement('span');
-                span.className = 'slice-text';
-                span.innerText = values[0];
-                span.style.transform = `translate(-50%, -50%) rotate(0deg) translateY(-${textOffset}px)`;
-                wheel.appendChild(span);
-                return;
+                wheel.style.background = 'none'; wheel.style.backgroundColor = colors[0];
+                const span = document.createElement('span'); span.className = 'slice-text';
+                span.innerText = values[0]; span.style.transform = `translate(-50%, -50%) rotate(0deg) translateY(-${textOffset}px)`;
+                wheel.appendChild(span); return;
             }
-            const sliceAngle = 360 / values.length;
-            const offsetAngle = sliceAngle / 2;
+            const sliceAngle = 360 / values.length; const offsetAngle = sliceAngle / 2;
             let gradient = `conic-gradient(from -${offsetAngle}deg, `;
             for(let i = 0; i < values.length; i++) {
-                const startAngle = i * sliceAngle;
-                const endAngle = startAngle + sliceAngle;
+                const startAngle = i * sliceAngle; const endAngle = startAngle + sliceAngle;
                 gradient += `${colors[i % colors.length]} ${startAngle}deg ${endAngle}deg${i === values.length - 1 ? '' : ', '}`;
-                const span = document.createElement('span');
-                span.className = 'slice-text';
-                span.innerText = values[i];
-                span.style.transform = `translate(-50%, -50%) rotate(${startAngle}deg) translateY(-${textOffset}px)`;
+                const span = document.createElement('span'); span.className = 'slice-text';
+                span.innerText = values[i]; span.style.transform = `translate(-50%, -50%) rotate(${startAngle}deg) translateY(-${textOffset}px)`;
                 wheel.appendChild(span);
             }
-            gradient += ')';
-            wheel.style.background = gradient;
+            gradient += ')'; wheel.style.background = gradient;
         }
 
         function initializeApp() {
@@ -1273,10 +1182,7 @@
         setTimeout(initializeApp, 500);
 
         // 📌 Close Announcement Popup
-        function closeAnnouncement() {
-            document.getElementById('announcementModal').classList.remove('active');
-        }
-
+        function closeAnnouncement() { document.getElementById('announcementModal').classList.remove('active'); }
         function openCustom() {
             let currentMax = outerVals[outerVals.length - 1];
             if (outerVals.length === 1 && outerVals[0] === 0) currentMax = 0;
@@ -1284,35 +1190,17 @@
             document.getElementById('sliderValDisplay').innerText = currentMax;
             document.getElementById('customModal').classList.add('active');
         }
-
-        function updateSliderText(val) {
-            document.getElementById('sliderValDisplay').innerText = val;
-        }
-
-        function closeCustom() {
-            document.getElementById('customModal').classList.remove('active');
-        }
-
+        function updateSliderText(val) { document.getElementById('sliderValDisplay').innerText = val; }
+        function closeCustom() { document.getElementById('customModal').classList.remove('active'); }
         function saveCustom() {
             const maxVal = parseInt(document.getElementById('wheelSlider').value);
-            outerVals = [];
-            let isZero = false;
-            if (maxVal === 0) {
-                outerVals = [0];
-                isZero = true;
-            } else {
-                for(let i = 100; i <= maxVal; i += 100) { outerVals.push(i); }
-            }
+            outerVals = []; let isZero = false;
+            if (maxVal === 0) { outerVals = [0]; isZero = true; } else { for(let i = 100; i <= maxVal; i += 100) { outerVals.push(i); } }
             buildWheel('outerWheel', outerVals, 165, isZero, false);
-            closeCustom();
-            outerDeg = 0;
-            innerDeg = 0;
-            
+            closeCustom(); outerDeg = 0; innerDeg = 0;
             document.getElementById('outerWheel').style.transition = 'none';
             document.getElementById('innerWheel').style.transition = 'none';
-            
             void document.getElementById('outerWheel').offsetWidth;
-
             document.getElementById('outerWheel').style.transform = `rotate(0deg)`;
             document.getElementById('innerWheel').style.transform = `rotate(0deg)`;
             document.getElementById('liveAmount').innerText = `රු. 0`;
@@ -1321,8 +1209,7 @@
         function createConfetti() {
             const colors = ['#6366f1', '#ec4899', '#f59e0b', '#10b981', '#06b6d4', '#8b5cf6'];
             for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
+                const confetti = document.createElement('div'); confetti.className = 'confetti';
                 confetti.style.left = Math.random() * 100 + 'vw';
                 confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
@@ -1334,176 +1221,84 @@
         }
 
         function showNotification(message, type = 'info') {
-            const colors = {
-                success: '#10b981',
-                error: '#ef4444',
-                warning: '#f59e0b',
-                info: '#6366f1'
-            };
-            const icons = {
-                success: 'fa-check-circle',
-                error: 'fa-exclamation-circle',
-                warning: 'fa-exclamation-triangle',
-                info: 'fa-info-circle'
-            };
+            const colors = { success: '#10b981', error: '#ef4444', warning: '#f59e0b', info: '#6366f1' };
+            const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', warning: 'fa-exclamation-triangle', info: 'fa-info-circle' };
             const notification = document.createElement('div');
             notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(135deg, ${colors[type]}, ${colors[type]}dd);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 12px;
-                font-family: 'Noto Sans Sinhala', 'Poppins', sans-serif;
-                font-weight: 600;
-                z-index: 9999999;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                animation: slideInRight 0.4s ease;
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(255,255,255,0.2);
+                position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, ${colors[type]}, ${colors[type]}dd);
+                color: white; padding: 15px 25px; border-radius: 12px; font-family: 'Noto Sans Sinhala', sans-serif; font-weight: 600;
+                z-index: 9999999; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 10px;
+                animation: slideInRight 0.4s ease; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);
             `;
             notification.innerHTML = `<i class="fas ${icons[type]}"></i> ${message}`;
             document.body.appendChild(notification);
-            setTimeout(() => {
-                notification.style.animation = 'slideOutRight 0.4s ease forwards';
-                setTimeout(() => notification.remove(), 400);
-            }, 3000);
+            setTimeout(() => { notification.style.animation = 'slideOutRight 0.4s ease forwards'; setTimeout(() => notification.remove(), 400); }, 3000);
         }
 
         function spin() {
             if (isSpinning) return;
             let nameInput = document.getElementById('userName').value;
-            if(nameInput.trim() === "") {
-                showNotification("කරුණාකර ඔබගේ නම ඇතුලත් කරන්න!", "warning");
-                return;
-            }
+            if(nameInput.trim() === "") { showNotification("කරුණාකර ඔබගේ නම ඇතුලත් කරන්න!", "warning"); return; }
             isSpinning = true;
-            
             const spinDuration = Math.floor(Math.random() * 5000) + 10000; 
 
             const spinBtn = document.getElementById('spinBtn');
-            spinBtn.disabled = true;
-            spinBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> කරකවමින්...';
+            spinBtn.disabled = true; spinBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> කරකවමින්...';
             document.getElementById('liveAmount').innerText = "කරකවමින්...";
 
-            const outIndex = Math.floor(Math.random() * outerVals.length);
-            const inIndex = Math.floor(Math.random() * innerVals.length);
-            const outTarget = 360 - (outIndex * (360 / outerVals.length));
-            const inTarget = 360 - (inIndex * (360 / innerVals.length));
+            const outIndex = Math.floor(Math.random() * outerVals.length); const inIndex = Math.floor(Math.random() * innerVals.length);
+            const outTarget = 360 - (outIndex * (360 / outerVals.length)); const inTarget = 360 - (inIndex * (360 / innerVals.length));
+            outerDeg += 3600 + outTarget - (outerDeg % 360); innerDeg += 5040 + inTarget - (innerDeg % 360);
 
-            outerDeg += 3600 + outTarget - (outerDeg % 360);
-            innerDeg += 5040 + inTarget - (innerDeg % 360);
-
-            const outerWheel = document.getElementById('outerWheel');
-            const innerWheel = document.getElementById('innerWheel');
-
+            const outerWheel = document.getElementById('outerWheel'); const innerWheel = document.getElementById('innerWheel');
             outerWheel.style.transition = `transform ${spinDuration}ms cubic-bezier(0.17, 0.67, 0.1, 1)`;
             innerWheel.style.transition = `transform ${spinDuration}ms cubic-bezier(0.17, 0.67, 0.1, 1)`;
-
-            outerWheel.style.transform = `rotate(${outerDeg}deg)`;
-            innerWheel.style.transform = `rotate(${innerDeg}deg)`;
+            outerWheel.style.transform = `rotate(${outerDeg}deg)`; innerWheel.style.transform = `rotate(${innerDeg}deg)`;
 
             setTimeout(() => {
                 const total = outerVals[outIndex] + innerVals[inIndex];
                 document.getElementById('liveAmount').innerText = `රු. ${total.toLocaleString()}`;
-                
-                // Greeting Changed to English "Hi"
                 document.getElementById('cardName').innerText = `Hi ${nameInput}`;
-                
                 document.getElementById('cardTotal').innerText = `රු. ${total.toLocaleString()}`;
-                const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
-                const currentDate = new Date().toLocaleDateString('en-US', dateOptions);
-                document.getElementById('captureDate').innerText = currentDate;
-
-                const avatarUrl = generateAvatar(nameInput);
+                document.getElementById('captureDate').innerText = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
                 const avatarImg = document.getElementById('popupAvatar');
-                avatarImg.src = avatarUrl;
-                avatarImg.style.display = 'block';
-                avatarImg.style.visibility = 'visible';
-                avatarImg.style.opacity = '1';
+                avatarImg.src = generateAvatar(nameInput); avatarImg.style.display = 'block'; avatarImg.style.visibility = 'visible'; avatarImg.style.opacity = '1';
 
-                // 📌 Push New Data to Firebase Database
-                database.ref('stats').set({
-                    totalSpins: globalSpinCount + 1,
-                    lastWinnerName: nameInput,
-                    lastWinnerAmount: total
-                });
-
-                // 📌 Push History List
-                const currentTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-                database.ref('spinHistory').push({
-                    userName: nameInput,
-                    wonAmount: total,
-                    playedTime: currentTime
-                });
+                database.ref('stats').set({ totalSpins: globalSpinCount + 1, lastWinnerName: nameInput, lastWinnerAmount: total });
+                database.ref('spinHistory').push({ userName: nameInput, wonAmount: total, playedTime: new Date().toLocaleString('en-US', { timeZone: 'Asia/Colombo' }) });
 
                 document.getElementById('resultModal').classList.add('active');
-                createConfetti();
-                isSpinning = false;
-                spinBtn.disabled = false;
-                spinBtn.innerHTML = '<i class="fas fa-sync-alt"></i> කරකවමු';
+                createConfetti(); isSpinning = false; spinBtn.disabled = false; spinBtn.innerHTML = '<i class="fas fa-sync-alt"></i> කරකවමු';
             }, spinDuration);
         }
 
-        function closeModal() {
-            document.getElementById('resultModal').classList.remove('active');
-        }
+        function closeModal() { document.getElementById('resultModal').classList.remove('active'); }
 
         function shareAndDownload() {
             const captureElement = document.getElementById('captureArea');
             html2canvas(captureElement, { scale: 2, useCORS: true, backgroundColor: null }).then(canvas => {
-                let link = document.createElement('a');
-                link.download = 'Daily_Saving_Challenge.png';
-                link.href = canvas.toDataURL("image/png");
-                link.click();
-                showNotification("Image downloaded successfully!", "success");
-            }).catch(err => {
-                console.error("Canvas Error:", err);
-                showNotification("Sorry, an error occurred while saving the image.", "error");
-            });
+                let link = document.createElement('a'); link.download = 'Daily_Saving_Challenge.png';
+                link.href = canvas.toDataURL("image/png"); link.click(); showNotification("Image downloaded successfully!", "success");
+            }).catch(err => { showNotification("Sorry, an error occurred while saving the image.", "error"); });
         }
 
         document.querySelectorAll('.my-modal').forEach(modal => {
             modal.addEventListener('click', (e) => {
-                // Prevent closing Announcement modal by clicking outside
-                if (e.target === modal && modal.id !== 'announcementModal') {
-                    modal.classList.remove('active');
-                }
+                if (e.target === modal && modal.id !== 'announcementModal') { modal.classList.remove('active'); }
             });
         });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                document.querySelectorAll('.my-modal.active').forEach(modal => {
-                    if(modal.id !== 'announcementModal') {
-                        modal.classList.remove('active');
-                    }
-                });
+                document.querySelectorAll('.my-modal.active').forEach(modal => { if(modal.id !== 'announcementModal') { modal.classList.remove('active'); } });
             }
             if (e.key === ' ' && !isSpinning) {
-                // Check if announcement modal is closed before spinning with space
-                if(!document.getElementById('announcementModal').classList.contains('active')) {
-                    e.preventDefault();
-                    spin();
-                }
+                if(!document.getElementById('announcementModal').classList.contains('active')) { e.preventDefault(); spin(); }
             }
         });
 
         const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideInRight {
-                from { transform: translateX(100px); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOutRight {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100px); opacity: 0; }
-            }
-        `;
+        style.textContent = `@keyframes slideInRight { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } } @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100px); opacity: 0; } }`;
         document.head.appendChild(style);
     </script>
 </body>
